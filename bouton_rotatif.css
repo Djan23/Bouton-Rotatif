@@ -1,0 +1,14 @@
+#divBtn {
+    position: absolute;
+    height: 25%;
+    margin: 0%;
+    padding: 0%;
+    top: 100px;
+    left: 100px;
+    border: 1px solid blue;
+}
+
+#imgBtn {
+    height: 100%;
+    /* border: 1px solid red; */
+}
