@@ -1,5 +1,4 @@
 var angle;
-
 var btnRotatif = document.getElementById("imgBtn");
 var divBtn = document.getElementById('divBtn');
 
@@ -20,7 +19,6 @@ function animBtnRot(e) {
     if (e.type === "mousemove"){
       var xPointeur = e.clientX;
       var yPointeur = e.clientY;
-
     } else if (e.type === "touchmove") {
       var xPointeur = e.changedTouches[0].pageX;
       var yPointeur = e.changedTouches[0].pageY;
@@ -29,7 +27,7 @@ function animBtnRot(e) {
     xPointeur = xPointeur - xBtn;
     yPointeur = yPointeur - yBtn;
 
-    // Calcul de l'angle 
+    /*** Calcul de l'angle ***********/
     /***************si on clique dans le coin supérieur droit **************/
     if ((xPointeur > (btnWidth/2)) && (yPointeur < (btnHeight/2))) {
       var coteOppose = xPointeur - (btnWidth/2);
