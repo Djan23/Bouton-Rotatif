@@ -9,9 +9,10 @@ btnRotatif.addEventListener("touchmove", animBtnRot);
 // Animation du bouton rotatif
 function animBtnRot(e) {
     console.clear();
+    e.preventDefault();
     /************dimensions du bouton ***************/
-    var btnHeight = e.target.offsetHeight;
-    var btnWidth = e.target.offsetWidth;
+    var btnHeight = parseInt(getComputedStyle(divBtn).height);
+    var btnWidth = parseInt(getComputedStyle(divBtn).width);
     /************coordonnées du bouton ***************/
     var xBtn = parseInt(getComputedStyle(divBtn).left);
     var yBtn = parseInt(getComputedStyle(divBtn).top);
@@ -24,6 +25,7 @@ function animBtnRot(e) {
       var yPointeur = e.changedTouches[0].pageY;
     }
     /************coordonnées corrigées du pointeur ***************/
+    /** c'est à dire qu'on obtient les coordonnée du pointeur à l'intérieur de  divBtn*/
     xPointeur = xPointeur - xBtn;
     yPointeur = yPointeur - yBtn;
 
@@ -44,13 +46,13 @@ function animBtnRot(e) {
     else if ((xPointeur < (btnWidth/2)) && (yPointeur > (btnHeight/2))) {
       var coteOppose = (btnWidth/2) - xPointeur;
       var coteAdjacent = yPointeur - (btnHeight/2);
-      angle = ((Math.atan(coteOppose / coteAdjacent) * 180) / Math.PI) + 90 + 90;
+      angle = ((Math.atan(coteOppose / coteAdjacent) * 180) / Math.PI) + 180;
     }
     /***************si on clique dans le coin supérieur gauche **************/
     else if ((xPointeur < (btnWidth/2)) && (yPointeur < (btnHeight/2))) {
       var coteOppose = (btnHeight/2) - yPointeur;
       var coteAdjacent = (btnHeight/2) - xPointeur ;
-      angle = ((Math.atan(coteOppose / coteAdjacent) * 180) / Math.PI) + 90 + 90 + 90;
+      angle = ((Math.atan(coteOppose / coteAdjacent) * 180) / Math.PI) + 270;
     }
 
     e.target.style.transform = 'rotate(' + angle + 'deg)';
